@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const emailLength = useMemo(()=>{
+    return email.length * 1000;
+  }, [email.length]);
 
-  useEffect(() => {
-    //executa domente quando o componente for carregado somente uma vez
-  }, []);
 
+  //executa somente quando o componente for carregado somente uma vez
   useEffect(() => {
     console.log(email);
   }, [email]); //a função será executada toda vez que o email e a senha for alterada
@@ -17,9 +18,12 @@ export const Login = () => {
   }, [password]);
 
   const handleSignIn = () => {};
+
+
   return (
     <div>
       <form>
+        <p>Quantidade de caracters no email: {emailLength}</p>
         <div>
           <label>
             <span>Email</span>
