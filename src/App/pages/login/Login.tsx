@@ -1,12 +1,13 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const inputPasswordRef = useRef<HTMLInputElement>(null);
+  
   const emailLength = useMemo(()=>{  //evita fazer calculos complexos várias vezes
     return email.length * 1000;
   }, [email.length]);
-
 
   // //executa somente quando o componente for carregado somente uma vez
   // useEffect(() => {
@@ -20,6 +21,11 @@ export const Login = () => {
   const handleSignIn = useCallback(()=>{ //guarda a função em memoria
     console.log(email);
     console.log(password);
+
+    if (inputPasswordRef.current !== null) {
+      inputPasswordRef.current.focus();
+    }
+
   }, [email, password]);
 
 
@@ -34,6 +40,7 @@ export const Login = () => {
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' ? inputPasswordRef.current?.focus() : undefined}
             />
           </label>
         </div>
@@ -42,6 +49,7 @@ export const Login = () => {
           <label>
             <span>Password</span>
             <input
+            ref={inputPasswordRef }
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
