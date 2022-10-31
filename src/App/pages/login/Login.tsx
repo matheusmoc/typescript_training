@@ -4,6 +4,7 @@ import InputLogin from "./components/InputLogin";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   const inputPasswordRef = useRef<HTMLInputElement>(null);
   
   const emailLength = useMemo(()=>{  //evita fazer calculos complexos várias vezes
@@ -57,6 +58,7 @@ export const Login = () => {
         type="password"
         label="Senha"
         value={password}
+        ref={inputPasswordRef}
         onChange={(newValue) => setPassword(newValue)}
         />
           {/* <label>
