@@ -1,8 +1,11 @@
 import { RoutesDom } from "./routes/index"
+import { UserLoggedProvider } from "./shared/contexts"
 
 function App() {
   return (
-    <RoutesDom />
+    <UserLoggedProvider>
+      <RoutesDom />
+    </UserLoggedProvider>
   )
 }
 

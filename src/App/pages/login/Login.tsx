@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import ButtonLogin from "./components/ButtonLogin";
 import InputLogin from "./components/InputLogin";
 
 export const Login = () => {
@@ -72,9 +73,18 @@ export const Login = () => {
           </label> */}
         </div>
 
-        <button type="button" onClick={handleSignIn}>
+        {/* <button type="button" onClick={handleSignIn}>
           Sign in
-        </button>
+        </button> */}
+
+        <ButtonLogin type="button" onClick={handleSignIn}>
+          Sign In
+        </ButtonLogin>
+
+        <ButtonLogin type="button" onClick={handleSignIn}>
+          Register
+        </ButtonLogin>
+        
       </form>
     </div>
   );

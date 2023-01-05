@@ -18,7 +18,7 @@ const InputLogin = React.forwardRef<HTMLInputElement, IInputLoginProps>((props, 
           value={props.value}
           onChange={(e) => props.onChange(e.target.value)}
           onKeyDown={(e) =>
-            e.key === "Enter" ? props.onPressEnter && props.onPressEnter : undefined
+            e.key === "Enter" ? props.onPressEnter && props.onPressEnter() : undefined
           }
         />
       </label>
